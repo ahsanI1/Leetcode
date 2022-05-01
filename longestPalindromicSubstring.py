@@ -2,8 +2,8 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         maximum = ""
         for i in range(len(s)):
-            s1 = palindromeHelper(s, i, i)
-            s2 = palindromeHelper(s, i, i + 1)
+            s1 = expandFromCenter(s, i, i)
+            s2 = expandFromCenter(s, i, i + 1)
             
             if len(s1) >= len(s2) and len(s1) > len(maximum):
                 maximum = s1
@@ -12,7 +12,7 @@ class Solution:
                 
         return maximum
     
-def palindromeHelper(s, left, right):
+def expandFromCenter(s, left, right):
     if s is None or left > right:
         return ""
 
